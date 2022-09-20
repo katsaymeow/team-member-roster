@@ -34,7 +34,8 @@ function promptTheUser(){
                 "Intern",
                 "Productivity",
                 "Engineer",
-                "Team Leader"
+                "Team Leader",
+                "That is all! Generate HTML"
             ]
         }
     ]).then (answers => {
