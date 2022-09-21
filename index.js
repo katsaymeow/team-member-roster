@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const TeamMembers = require('./team-members');
-const generateHtml = require("./generate-html")
+const TeamMember = require('./lib/team-members');
+const generateHtml = require("./src/generate-html");
 
 // email and user name need to open and function in the html to take the user to the employee roster
 
@@ -9,7 +9,7 @@ const generateHtml = require("./generate-html")
 // need team members name, id email address and office number
 // nedds to start with team manager, then add engineer, intern or employee. This list must include an exit option to print the html. 
 
-function promptTheUser(){
+function promptTheUser(){//manager menu prompt to add nect set of questions
     return inquirer.prompt([
         {
             type: "input",
@@ -32,13 +32,12 @@ function promptTheUser(){
             message: "Which team member type are we logging today?",
             choices: [
                 "Intern",
-                "Productivity",
                 "Engineer",
-                "Team Leader",
+                "Manager",
                 "That is all! Generate HTML"
             ]
         }
-    ]).then (answers => {
+    ]).then (answers => {// callback answers.memberEmail ex
     const htmlGeneration = generateHtml(answers);
     fs.writeFile('./dist/index-roster.html', htmlGeneration, (error) => error ? console.log(error) : console.log('the html is generated🦎'));
     })
