@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const TeamMember = require('./lib/team-members.js');
-const generateHtml = require("./src/generate-html.js");
+const TeamMember = require('./lib/team-members');
+const generateHtml = require('./src/generate-html.js');
 
 // email and user name need to open and function in the html to take the user to the employee roster
 
