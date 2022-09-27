@@ -1,9 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const TeamMembers = require("./lib/team-members.js");
-const promptUser = require('./index.js');
+const TeamMembers = require("../lib/team-members.js");
+const promptUser = require('../index');
 
-function generateHtml(answers) {
+function generateHtml() {
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +24,8 @@ function generateHtml(answers) {
         <a href = "mailto: ">${answers.memberEmail}</a></div>
         <div class = "member-office">${answers.memberOffice}</div>
         <div class = "member-school">${answers.school}</div>
-        <div class = "member-github">${answers.github}</div>
+        <div class = "member-github"><a href = ${answers.github}</a></div>
         </div>
 </main>`
 }
-generateHtml(answers);
+

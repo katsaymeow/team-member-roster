@@ -9,8 +9,19 @@ const generateHtml = require('./src/generate-html.js');
 // need team members name, id email address and office number
 // nedds to start with team manager, then add engineer, intern or employee. This list must include an exit option to print the html. 
 
-function promptTheUser(){//manager menu prompt to add nect set of questions
+function promptTheUser() {//manager menu prompt to add nect set of questions
     return inquirer.prompt([
+        {
+            type: "list",
+            name: "title",
+            message: "Which team member type are we logging today?",
+            choices: [
+                "Intern",
+                "Engineer",
+                "Manager",
+                "That is all! Generate HTML"
+            ]
+        },
         {
             type: "input",
             name: "memberName",
@@ -27,19 +38,18 @@ function promptTheUser(){//manager menu prompt to add nect set of questions
             message: "Please enter the team members email address that is best for team contact."
         },
         {
-            type: "list",
-            name: "title",
-            message: "Which team member type are we logging today?",
-            choices: [
-                "Intern",
-                "Engineer",
-                "Manager",
-                "That is all! Generate HTML"
-            ]
+            type: "input",
+            name: "memberSchool",
+            message: "Please enter your school.",
+        },
+        {
+            type: "input",
+            name: "memberGithub",
+            message: "Please enter your github username."
         }
-    ]).then (answers => {// callback answers.memberEmail ex
-    const htmlGeneration = generateHtml(answers);
-    fs.writeFile('./dist/index-roster.html', htmlGeneration, (error) => error ? console.log(error) : console.log('the html is generated🦎'));
+    ]).then(answers => {// callback answers.memberEmail ex
+        const htmlGeneration = generateHtml;
+        fs.writeFile('./dist/index-roster.html', htmlGeneration, (error) => error ? console.log(error) : console.log('the html is generated🦎'));
     })
 }
 promptTheUser();
